@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Duma</title>
+    <link rel="stylesheet" type="text/css" href="../static/Duma_style.css"/>
+</head>
+<body>
+  <div class="{{ sty }}">
+      <div class="home"><a href="{{ url_for('show_duma') }}"><img src="https://s6.postimg.cc/wdvkva5w1/plr.png" width="100"
+           height="100" border="0" alt="Home"></a></div>
+      <div class="nna">
+              <p class="h">
+                  <a href="{{ url_for('show_team', team='GD') }}">
+                      Государственная Дума
+                  </a><br>
+                  <a href="{{ url_for('show_team', team='SF') }}">
+                      Совет Федерации
+                  </a></p>
+      </div>
+      <div class="main">
+          <div class="h0"><p class="header">Фракции</p> </div>
+          <div class="fac">
+              {% for f, ff in fac %}
+              <p><a  href="{{ url_for('show_faction', faction=ff) }}">
+                  {{ f }}
+              </a></p>
+              {% endfor %}
+          </div>
+      </div>
+      <div class="t">
+              <div class="h1"><p class="header">Действующие</p> </div>
+              <div class="col1">
+                  {% for t, tt in curr_t %}
+                  <p><a href="{{ url_for('show_deputat', index=tt) }}">
+                      {{ t }}
+                  </a></p>
+                  {% endfor %}
+              </div>
+              <div class="h2"><p class="header">Недействующие</p> </div>
+              <div class="col2">
+                  {% for f, ff in curr_f %}
+                  <p><a href="{{ url_for('show_deputat', index=ff) }}">
+                      {{ f }}
+                  </a></p>
+                  {% endfor %}
+              </div>
+      </div>
+  </div>
+</body>
+</html>

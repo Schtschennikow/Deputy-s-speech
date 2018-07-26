@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deputat</title>
+    <link rel="stylesheet" type="text/css" href="../static/Duma_style.css"/>
+</head>
+<body>
+    <div class="contprl">
+    <div class="home"><a href="{{ url_for('show_duma') }}"><img src="https://s6.postimg.cc/wdvkva5w1/plr.png" width="100"
+           height="100" border="0" alt="Home"></a></div>
+    <div class="nna1">
+        <p class="h">{{ name }}<br>{{ patronymic }}<br>{{ family }}</p>
+    </div>
+<div class="bio">
+    <p class="biotext">
+        Дата рождения: {{ birthdate.replace('-', '.') }}
+        <br>
+        <br>
+        Дата получения мандата: {{ credentialsStart.replace('-', '.') }}
+        <br>
+        <br>
+        Дата окончания мандата: {{ credentialsEnd.replace('-', '.') }}
+        <br>
+        <br>
+        {{ factionName }}
+        <br>
+        <br>
+        Роль: {{ factionRole}}
+        <br>
+        <br>
+        Число законопроектов: {{ lawcount }}
+    </p>
+
+</div>
+<div class="graphs">
+    {% for pic in pics %}
+    <p class="header">
+        {{ pic[0] }}
+    </p>
+    <p style="margin: 1%; font-size: 3vmin;">
+        Количество выступлений: {{ pic[2] }}
+    </p>
+    <p>
+        <img src="data:image/png;base64,{{ pic[1] }}" width="100%">
+    </p>
+    {% endfor %}
+</div>
+</div>
+</body>
+</html>
